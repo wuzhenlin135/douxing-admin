@@ -44,7 +44,7 @@ export const constantRouterMap = [
         path: 'index',
         name: 'order',
         component: () => import('@/views/order/index'),
-        meta: { title: '订单管理', icon: 'form' }
+        meta: { title: '订单管理', icon: 'example' }
       }
     ]
   },
@@ -81,7 +81,7 @@ export const constantRouterMap = [
         path: 'list',
         name: 'list',
         component: () => import('@/views/inn/index'),
-        meta: { title: '客栈列表', icon: 'table' }
+        meta: { title: '客栈审核', icon: 'table' }
       },
       {
         path: 'exchange',
@@ -99,11 +99,22 @@ export const constantRouterMap = [
         path: 'index',
         name: 'User',
         component: () => import('@/views/user/index'),
-        meta: { title: '用户管理', icon: 'form' }
+        meta: { title: '用户管理', icon: 'example' }
       }
     ]
   },
-
+  {
+    path: '/settings',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Settings',
+        component: () => import('@/views/settings/index'),
+        meta: { title: '平台设置', icon: 'example' }
+      }
+    ]
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 
