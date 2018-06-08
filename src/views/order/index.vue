@@ -82,11 +82,17 @@
           <el-tag :type="scope.row.status | statusFilter">{{scope.row.statusLabel}}</el-tag>
         </template>
       </el-table-column>
+
+      <el-table-column align="center" label="操作" width="120" >
+        <template slot-scope="scope">
+          <el-button type="primary" @click="confirmRefund(scope.row)" size="small" icon="el-icon-circle-check-outline" :disabled="scope.row.status === 4">退款</el-button>
+        </template>
+      </el-table-column>
     </el-table>
 
     <div class="pagination-container">
-      <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="listQuery.page"
-       :page-sizes="[10,20,30, 50]" :page-size="listQuery.limit" layout="total, sizes, prev, pager, next, jumper" :total="total">
+      <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="listQuery.pageNo"
+       :page-sizes="[10,20,30, 50]" :page-size="listQuery.pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total">
       </el-pagination>
     </div>
 
@@ -168,6 +174,9 @@ export default {
         this.statusOptions = response.obj.statusOptions
         this.listLoading = false
       })
+    },
+    confirmRefund(row) {
+      this.$message({ message: '该功能暂未实现', type: 'warning' })
     },
     handleFilter() {
       this.listQuery.pageNo = 1
